@@ -29,3 +29,7 @@ export interface PaymentResponse {
 	created_at: Date
 	confirmation: Confirmation
 }
+
+export interface PaymentPayload {
+	amount: number
+}
