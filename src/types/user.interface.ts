@@ -4,6 +4,7 @@ export interface User {
 	name: string
 	avatarPath: string
 	phone: string
+	isAdmin: boolean
 }
 
 export type UpdateUserType = Omit<User, 'id'>

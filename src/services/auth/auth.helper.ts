@@ -19,7 +19,7 @@ export const setCookieTokens = (data: Tokens) => {
 export const removeUserFromStorage = () => {
 	Cookies.remove(TokensEnum.access)
 	Cookies.remove(TokensEnum.refresh)
-	localStorage.removeItem('user')
+	localStorage.removeItem(StorageKeys.user)
 }
 
 export const saveUserToStorage = (data: AuthResponce) => {
