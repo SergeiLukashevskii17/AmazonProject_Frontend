@@ -28,7 +28,7 @@ axiosAuth.interceptors.response.use(
 		const originalRequest = error.config
 
 		const invalidToken =
-			error.response.status === 401 ||
+			error.response?.status === 401 ||
 			errorCatch(error) === JwtErrors.expired ||
 			errorCatch(error) === JwtErrors.unprovided
 

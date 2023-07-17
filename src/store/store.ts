@@ -9,8 +9,7 @@ import {
 	REHYDRATE
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-// import { carouselSlice } from './carousel/carousel.slice'
-// import { cartSlice } from './cart/cart.slice'
+import { cartSlice } from './cart/cart.slice'
 import {
 	combineReducers,
 	configureStore,
@@ -25,8 +24,7 @@ const persisConfig = {
 }
 
 const rootReducer = combineReducers({
-	// cart: cartSlice.reducer,
-	// carousel: carouselSlice.reducer,
+	cart: cartSlice.reducer,
 	user: userSlice.reducer
 })
 

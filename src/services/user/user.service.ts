@@ -1,11 +1,11 @@
-import { getUserById } from '@/api/requests/user/getUserById'
+import { getUserByToken } from '@/api/requests/user/getUserByToken'
 import { updateUser } from '@/api/requests/user/updateUser'
 import { updateUserFavorites } from '@/api/requests/user/updateUserFavorites'
 import { ToggleFavoritesType, UpdateUserType } from '@/types/user.interface'
 
 export const UserService = {
-	async getById(id: number) {
-		return getUserById(id)
+	async getCurrentUser() {
+		return getUserByToken()
 	},
 
 	async update(data: UpdateUserType) {

@@ -5,7 +5,7 @@ export interface Review {
 	user: User
 	createdAt: string
 	text: string
-	rating: string
+	rating: number
 	productId: number
 }
 

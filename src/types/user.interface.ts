@@ -1,3 +1,6 @@
+import { Order } from './order.interface'
+import { Product } from './product.interface'
+
 export interface User {
 	id: number
 	email: string
@@ -5,6 +8,11 @@ export interface User {
 	avatarPath: string
 	phone: string
 	isAdmin: boolean
+}
+
+export interface FullUser extends User {
+	favorites: Product[]
+	orders: Order[]
 }
 
 export type UpdateUserType = Omit<User, 'id'>

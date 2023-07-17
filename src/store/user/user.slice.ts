@@ -2,11 +2,10 @@ import { StorageKeys } from '@/types/common'
 import { InitialState } from './user.interface'
 import { createSlice } from '@reduxjs/toolkit'
 import { checkAuth, login, logout, register } from './user.actions'
-
-const storageUser = localStorage.getItem(StorageKeys.user)
+import { getLocalStorageValue } from '@/utils/getLocalStorageValue'
 
 const initialState: InitialState = {
-	user: storageUser ? JSON.parse(storageUser as string) : null,
+	user: getLocalStorageValue(StorageKeys.user),
 	isLoading: false
 }
 
@@ -47,5 +46,8 @@ export const userSlice = createSlice({
 			.addCase(checkAuth.fulfilled, (state, { payload }) => {
 				state.user = payload.user
 			})
+			// .addCase(checkAuth.rejected, state => {
+			// 	state.user = null
+			// })
 	}
 })

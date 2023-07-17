@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import '../src/assets/styles/globals.css'
+import '../src/assets/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { persistor, store } from '@/store/store'
@@ -7,7 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { AuthProvider } from '@/providers/AuthProvider'
 import { ComponentAuthFields } from '@/providers/types'
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			refetchOnWindowFocus: false

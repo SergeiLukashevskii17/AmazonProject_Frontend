@@ -12,7 +12,7 @@ import {
 	UpdateProductType
 } from '@/types/product.interface'
 
-export const PaymentService = {
+export const ProductService = {
 	async getAll(query?: ProductDataFilters) {
 		return getAllProducts(query)
 	},

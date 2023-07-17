@@ -3,11 +3,11 @@ import axios from 'axios'
 import { AuthResponce, EmailPassword } from '@/store/user/user.interface'
 import { getContentType } from '@/api/api.helper'
 import { saveUserToStorage } from './auth.helper'
-import { Auth, TokensEnum } from '@/types/common'
+import { AuthVariants, TokensEnum } from '@/types/common'
 import { postAuthorizeUser } from '@/api/requests/postAuthorizeUser'
 
 export const AuthService = {
-	async authorize(type: Auth, data: EmailPassword) {
+	async authorize(type: AuthVariants, data: EmailPassword) {
 		const response = await postAuthorizeUser(type, data)
 
 		if (response.data.accessToken) {
@@ -26,7 +26,7 @@ export const AuthService = {
 				data: AuthResponce
 			}
 		>(
-			process.env.SERVER_URL + 'auth/login/access-token',
+			process.env.SERVER_URL + '/auth/login/access-token',
 			{ refreshToken },
 			{ headers: getContentType() }
 		)

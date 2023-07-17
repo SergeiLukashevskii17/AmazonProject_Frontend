@@ -13,6 +13,14 @@ export interface Product {
 	category: Category
 }
 
+export interface Products {
+	products: Product[]
+}
+
+export interface PaginationProducts extends Products {
+	length?: number
+}
+
 export interface ProductDetails {
 	product: Product
 }

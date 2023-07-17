@@ -3,13 +3,13 @@ import { errorCatch } from '@/api/api.helper'
 import { AuthResponce, EmailPassword } from './user.interface'
 import { removeUserFromStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
-import { Auth, JwtErrors } from '@/types/common'
+import { AuthVariants, JwtErrors } from '@/types/common'
 
 export const register = createAsyncThunk<AuthResponce, EmailPassword>(
 	'auth/register',
 	async (data, thunkApi) => {
 		try {
-			const response = await AuthService.authorize(Auth.register, data)
+			const response = await AuthService.authorize(AuthVariants.register, data)
 			return response
 		} catch (error) {
 			return thunkApi.rejectWithValue(error)
@@ -21,7 +21,7 @@ export const login = createAsyncThunk<AuthResponce, EmailPassword>(
 	'auth/login',
 	async (data, thunkApi) => {
 		try {
-			const response = await AuthService.authorize(Auth.login, data)
+			const response = await AuthService.authorize(AuthVariants.login, data)
 			return response
 		} catch (error) {
 			return thunkApi.rejectWithValue(error)
@@ -40,6 +40,7 @@ export const checkAuth = createAsyncThunk<AuthResponce>(
 			const response = await AuthService.getNewTokens()
 			return response.data
 		} catch (error) {
+			// mb  remove if and always use logout
 			if (errorCatch(error) === JwtErrors.expired) {
 				thunkApi.dispatch(logout())
 			}

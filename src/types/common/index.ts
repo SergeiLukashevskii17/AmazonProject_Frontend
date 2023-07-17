@@ -12,7 +12,7 @@ export enum JwtErrors {
 	unprovided = 'jwt must be provided'
 }
 
-export enum Auth {
+export enum AuthVariants {
 	login = 'login',
 	register = 'register'
 }

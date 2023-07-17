@@ -1,8 +1,8 @@
 import { axiosAuth } from '@/api/api.interceptor'
-import { Product, ProductDataFilters } from '@/types/product.interface'
+import { PaginationProducts, Product, ProductDataFilters } from '@/types/product.interface'
 
 export const getAllProducts = async (query?: ProductDataFilters) => {
-	const responce = await axiosAuth<Product[]>({
+	const responce = await axiosAuth<PaginationProducts>({
 		url: `/product`,
 		method: 'GET',
 		params: query || {}
