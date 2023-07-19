@@ -29,9 +29,9 @@ export const login = createAsyncThunk<AuthResponce, EmailPassword>(
 	}
 )
 
-export const logout = createAsyncThunk('auth/logout', async () =>
+export const logout = createAsyncThunk('auth/logout', async () => {
 	removeUserFromStorage()
-)
+})
 
 export const checkAuth = createAsyncThunk<AuthResponce>(
 	'auth/check-auth',

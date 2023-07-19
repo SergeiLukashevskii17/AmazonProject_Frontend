@@ -2,11 +2,11 @@ import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 import { PaginationProducts } from '@/types/product.interface'
 import { Meta } from '@/ui/Meta'
-import Catalog from '@/ui/catalog/Catalog'
 import { FC } from 'react'
 import { Layout } from '@/ui/layout/Layout'
+import { CatalogPagination } from '@/ui/catalog/CatalogPagination'
 
-export const Home: FC<PaginationProducts> = ({ products }) => {
+export const Home: FC<PaginationProducts> = ({ products, total }) => {
 	const { user, isLoading: isUserLoading } = useAuth()
 	const { logout } = useActions()
 
@@ -15,7 +15,11 @@ export const Home: FC<PaginationProducts> = ({ products }) => {
 			<Layout>
 				{/* remove */}
 				{!!user && <button onClick={() => logout()}>Logout</button>}
-				<Catalog title='Popular products' products={products} isPagination />
+				<CatalogPagination
+					title='Popular products'
+					products={products}
+					total={total}
+				/>
 			</Layout>
 		</Meta>
 	)

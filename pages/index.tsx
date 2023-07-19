@@ -14,8 +14,8 @@ export const getStaticProps: GetStaticProps<PaginationProducts> = async () => {
 	}
 }
 
-const HomePage: NextPage<PaginationProducts> = ({ products, length }) => {
-	return <Home products={products} length={length} />
+const HomePage: NextPage<PaginationProducts> = ({ products, total }) => {
+	return <Home products={products} total={total} />
 }
 
 export default HomePage

@@ -1,9 +1,9 @@
 import { axiosAuth } from '@/api/api.interceptor'
 import { Product } from '@/types/product.interface'
 
-export const getProductBySlug = async (slug: string) => {
+export const getProductByCategory = async (categoryId: number) => {
 	const responce = await axiosAuth<Product>({
-		url: `/product/slug/${slug}`,
+		url: `/product/category/${categoryId}`,
 		method: 'GET'
 	})
 

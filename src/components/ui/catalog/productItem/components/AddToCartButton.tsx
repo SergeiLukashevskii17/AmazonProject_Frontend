@@ -8,7 +8,7 @@ export const AddToCartButton: FC<{ product: Product }> = ({ product }) => {
 	const { addToCart, removeFromCart } = useActions()
 	const { items } = useCart()
 
-	const currentElement = items.find(
+	const isAlreadyInCart = items.some(
 		cartItem => cartItem.product.id === product.id
 	)
 
@@ -17,16 +17,17 @@ export const AddToCartButton: FC<{ product: Product }> = ({ product }) => {
 			<button
 				className='text-secondary w-8 h-8 flex justify-center items-center'
 				onClick={() =>
-					currentElement
-						? removeFromCart({ id: currentElement.id })
+					isAlreadyInCart
+						? removeFromCart({ id: product.id })
 						: addToCart({
 								product,
 								quantity: 1,
-								price: product.price
+								price: product.price,
+								id: product.id
 						  })
 				}
 			>
-				{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
+				{isAlreadyInCart ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
 			</button>
 		</div>
 	)

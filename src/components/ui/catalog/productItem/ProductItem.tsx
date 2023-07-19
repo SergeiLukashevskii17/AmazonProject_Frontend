@@ -9,8 +9,8 @@ import { convertPrice } from '@/utils/convertPrice'
 
 export const ProductItem: FC<{ product: Product }> = ({ product }) => {
 	return (
-		<div>
-			<div className=' rounded-xl relative overflow-hidden'>
+		<div className='animate-scaleIn'>
+			<div className=' rounded-xl relative overflow-hidden bg-white'>
 				<div className='absolute top-2 right-2 z-10 bg-gray rounded-md'>
 					<FavoriteButton productId={product.id} />
 					<AddToCartButton product={product} />
@@ -19,13 +19,19 @@ export const ProductItem: FC<{ product: Product }> = ({ product }) => {
 					<Image
 						width={240}
 						height={240}
-						style={{ minHeight: 240, minWidth: 240, objectFit: 'cover' }}
+						style={{
+							minHeight: 240,
+							minWidth: 240,
+							objectFit: 'cover'
+						}}
 						src={product.images[0]}
 						alt={product.name}
 					/>
-					<h3 className='mt-2 font-semibold'>{product.name}</h3>
 				</Link>
 			</div>
+			<Link href={`products/${product.slug}`}>
+				<h3 className='mt-2 font-semibold'>{product.name}</h3>
+			</Link>
 			<Link
 				href={`/category/${product.category.slug}`}
 				className='text-aqua test-sm mb-2'

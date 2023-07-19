@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 import { Sidebar } from './components/Sidebar'
-import { Header } from './components/Header'
+import { Header } from './components/header/Header'
 
 export const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	return (
@@ -8,7 +8,7 @@ export const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
 			<Header />
 			<div className='flex'>
 				<Sidebar />
-				<main className='p-12'>{children}</main>
+				<main className='p-12 w-full'>{children}</main>
 			</div>
 		</div>
 	)

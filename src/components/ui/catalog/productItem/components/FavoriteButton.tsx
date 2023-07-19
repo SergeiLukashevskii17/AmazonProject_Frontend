@@ -8,8 +8,6 @@ import { Spin } from 'antd'
 export const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 	const { userProfile, isUserProfileLoading } = useGetProfile()
 
-	console.log(userProfile)
-
 	const isFavorite = userProfile?.favorites.some(
 		favorite => favorite.id === productId
 	)
@@ -25,7 +23,9 @@ export const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 	return (
 		<div>
 			{isUserProfileLoading ? (
-				<Spin />
+				<div className='flex justify-center pt-2'>
+					<Spin />
+				</div>
 			) : (
 				<button
 					onClick={() => mutateUpdateFavorites()}

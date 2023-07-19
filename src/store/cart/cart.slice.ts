@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import {
-	AddToCartPayload,
 	CartInitialState,
 	ChangeQuantityPayload,
 	QuantityChangeType
 } from './cart.types'
+import { CartItem } from '@/types/cart.interface'
 
 const initialState: CartInitialState = {
 	items: []
@@ -14,26 +14,28 @@ export const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addToCart: (state, action: PayloadAction<AddToCartPayload>) => {
+		addToCart: (state, { payload }: PayloadAction<CartItem>) => {
 			const isExist = state.items.some(
-				item => item.product.id === action.payload.product.id
+				item => item.product.id === payload.product.id
 			)
 
 			if (!isExist) {
-				state.items.push({ ...action.payload, id: state.items.length })
+				state.items.push({ ...payload })
 			}
 		},
-		removeFromCart: (state, action: PayloadAction<{ id: number }>) => {
-			state.items = state.items.filter(item => item.id === action.payload.id)
+		removeFromCart: (state, { payload }: PayloadAction<{ id: number }>) => {
+			state.items = state.items.filter(item => item.id !== payload.id)
 		},
-		changeQuantity: (state, action: PayloadAction<ChangeQuantityPayload>) => {
-			const { id, type } = action.payload
+		changeQuantity: (
+			state,
+			{ payload: { id, type } }: PayloadAction<ChangeQuantityPayload>
+		) => {
 			const item = state.items.find(item => item.id === id)
 			if (item) {
 				if (type === QuantityChangeType.plus) {
 					item.quantity++
 				} else {
-					item.quantity--
+					if (item.quantity > 0) item.quantity--
 				}
 			}
 		},

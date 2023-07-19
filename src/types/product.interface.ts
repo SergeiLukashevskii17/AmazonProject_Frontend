@@ -18,7 +18,7 @@ export interface Products {
 }
 
 export interface PaginationProducts extends Products {
-	length?: number
+	total: number
 }
 
 export interface ProductDetails {

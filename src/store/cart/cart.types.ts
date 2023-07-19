@@ -4,8 +4,6 @@ export interface CartInitialState {
 	items: CartItem[]
 }
 
-export interface AddToCartPayload extends Omit<CartItem, 'id'> {}
-
 export enum QuantityChangeType {
 	minus = 'minus',
 	plus = 'plus'

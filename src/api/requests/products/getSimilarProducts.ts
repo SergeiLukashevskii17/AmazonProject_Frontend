@@ -3,7 +3,7 @@ import { Product } from '@/types/product.interface'
 
 export const getSimilarProducts = async (id: number) => {
 	const responce = await axiosAuth<Product[]>({
-		url: `/product/similar/${id}`,
+		url: `/product/similiar/${id}`,
 		method: 'GET'
 	})
 
