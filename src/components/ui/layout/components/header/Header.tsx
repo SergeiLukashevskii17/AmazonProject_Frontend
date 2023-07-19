@@ -20,7 +20,7 @@ export const Header = () => {
 				/>
 			</Link>
 			{/* <Search /> */}
-			<div className='flex items-center justify-end gap-10'>
+			<div className='flex items-center  gap-10'>
 				<Link href='/favorites' className='text-white'>
 					<AiOutlineHeart size={28} />
 				</Link>
